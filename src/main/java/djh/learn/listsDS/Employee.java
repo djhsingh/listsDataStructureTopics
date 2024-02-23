@@ -1,5 +1,7 @@
 package djh.learn.listsDS;
 
+import java.util.Objects;
+
 public class Employee {
     private String firstName;
     private String secondName;
@@ -42,5 +44,18 @@ public class Employee {
                 ", secondName='" + secondName + '\'' +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(secondName, employee.secondName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, secondName, salary);
     }
 }
